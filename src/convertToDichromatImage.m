@@ -5,9 +5,12 @@ function [imgOut] = convertToDichromatImage(img, method)
 	RGB_LMS_INV = inv(RGB_LMS);
 	LMS_DEUTRAN = [ 1 0 0; 0.494207 0 1.24827; 0 0 1 ];
 	LMS_PROTAN = [ 0 2.02344 -2.52581; 0 1 0; 0 0 1 ];
-
+    LMS_TRITAN = [ 1 0 0; 0 1 0; -0.395913 0.801109 0 ];
+    
 	if (strcmp(method, 'deutran'))
 		T = LMS_DEUTRAN;
+    elseif (strcmp(method, 'tritan'))
+        T = LMS_TRITAN;
 	else
 		T = LMS_PROTAN;
 	end

@@ -1,0 +1,20 @@
+tritanimages={'changedtritancimage1.jpg','changedtritanwinnipeg.png','changedtritantokyo.jpg','changedtritanvan.jpg'};
+deutranimages={'changedcimage1.jpg','changedwinnipeg.png','changedtokyo.jpg','changedvan.jpg'};
+originalimages={'cimage1.jpg','winnipeg.png','tokyo.jpg','van.jpg'};
+
+for currentIndex=1:size(originalimages,1)
+    distanceOfImages=0;
+    lab_he_original=rgb2lab(imread(originalimages{currentIndex}));
+    C_lab = rgb2lab(imread(deutranimages{currentIndex}));
+    for i=1:size(lab_he_original,1)
+        for j=1:size(lab_he_original,2)
+            for k=1:size(lab_he_original,3)
+                difference =(lab_he_original(i,j,k))-(C_lab(i,j,k));
+                %difference
+                distanceOfImages=double(distanceOfImages)+double(difference^2);
+            end
+        end
+    end
+    distanceOfImages=sqrt(double(distanceOfImages))/(size(lab_he_original,3)*size(lab_he_original,2)*size(lab_he_original,1));
+    
+end
